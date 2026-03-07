@@ -1,7 +1,7 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { NextResponse } from "next/server";
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "AIzaSyBhPeVhRECVvQC9U0zVxLw6xFiLHxtA-f4");
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "");
 
 export async function POST(req) {
   try {
@@ -9,6 +9,10 @@ export async function POST(req) {
 
     if (!text) {
       return NextResponse.json({ error: "No text provided for analysis" }, { status: 400 });
+    }
+
+    if (!process.env.GEMINI_API_KEY) {
+      return NextResponse.json({ error: "GEMINI_API_KEY is not configured in .env.local" }, { status: 500 });
     }
 
     const systemInstruction = `You are an Advanced NLP Cognitive Bias Analyst AI.
@@ -43,11 +47,10 @@ You must return your analysis as a strict JSON object with exactly this structur
 
     const model = genAI.getGenerativeModel({
       model: "gemini-2.5-flash",
-      systemInstruction: { parts: [{ text: systemInstruction }] },
       generationConfig: { responseMimeType: "application/json" }
     });
 
-    const prompt = `Here is the article text to analyze:\n\n${text}`;
+    const prompt = `${systemInstruction}\n\nHere is the article text to analyze:\n\n${text}`;
     const result = await model.generateContent(prompt);
     const responseText = result.response.text();
 
@@ -56,6 +59,7 @@ You must return your analysis as a strict JSON object with exactly this structur
 
   } catch (error) {
     console.error("Analysis Error:", error);
-    return NextResponse.json({ error: "Failed to perform analysis: " + error.message, stack: error.stack }, { status: 500 });
+    return NextResponse.json({ error: "Failed to perform analysis: " + error.message }, { status: 500 });
   }
 }
+

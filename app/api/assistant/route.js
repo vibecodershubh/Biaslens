@@ -1,10 +1,17 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "AIzaSyBhPeVhRECVvQC9U0zVxLw6xFiLHxtA-f4");
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "");
 
 export async function POST(req) {
   try {
     const { messages, articleContext } = await req.json();
+
+    if (!process.env.GEMINI_API_KEY) {
+      return new Response(JSON.stringify({ error: "GEMINI_API_KEY is not configured in .env.local" }), {
+        status: 500,
+        headers: { "Content-Type": "application/json" }
+      });
+    }
 
     const systemInstruction = `You are the BiasLens AI Cognitive Engine. Your goal is to analyze news articles for framing bias, emotional manipulation, and political tilt.
 ${articleContext ? `\nContext: The user is currently reading this article: ${articleContext}` : ""}
@@ -15,27 +22,20 @@ Be precise, analytical, and objective. Use Markdown for formatting.`;
       systemInstruction: { parts: [{ text: systemInstruction }] },
     });
 
-    // Convert OpenAI message format to Gemini format
-    // Filter out previous system messages (Gemini handles it via systemInstruction)
     const filteredMessages = messages.filter(m => m.role !== 'system');
-
     let history = [];
     if (filteredMessages.length > 1) {
       history = filteredMessages.slice(0, -1).map(msg => ({
         role: msg.role === 'assistant' ? 'model' : 'user',
         parts: [{ text: msg.content }]
       }));
-
-      // Gemini strictly requires the history to begin with a 'user' role
       if (history.length > 0 && history[0].role === 'model') {
         history.unshift({ role: 'user', parts: [{ text: 'System Initialized.' }] });
       }
     }
 
     const latestMessage = filteredMessages[filteredMessages.length - 1].content;
-
     const chat = model.startChat({ history });
-
     const result = await chat.sendMessageStream(latestMessage);
 
     const stream = new ReadableStream({
@@ -70,3 +70,5 @@ Be precise, analytical, and objective. Use Markdown for formatting.`;
     });
   }
 }
+
+
