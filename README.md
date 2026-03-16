@@ -8,7 +8,7 @@ Built with a **modern React stack**, this platform delivers real-time news data,
 
 ## 🚀 Live Demo
 
-🔗 **Live Website:** https://your-live-link.vercel.app
+🔗 **Live Website:** https://biaslens-p5ir.vercel.app/
 
 ---
 
