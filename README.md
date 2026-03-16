@@ -84,6 +84,9 @@ project-root
 ```
 
 ---
+## 📸 Preview
+
+![Preview](./preview.png)
 
 ## ⚙️ Installation
 
@@ -159,3 +162,7 @@ This project is open-source and available under the MIT License.
 **Shubh**
 
 CSE Student | AI Enthusiast | Building intelligent web experiences.
+
+![GitHub stars](https://img.shields.io/github/stars/vibecodershubh/Biaslens)
+![GitHub forks](https://img.shields.io/github/forks/vibecodershubh/Biaslens)
+![GitHub issues](https://img.shields.io/github/issues/vibecodershubh/Biaslens)
