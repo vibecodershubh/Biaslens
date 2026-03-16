@@ -1,36 +1,157 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🌐 AI News Intelligence Platform
 
-## Getting Started
+A modern **AI-powered news analysis web application** that helps users explore global news, detect bias, and understand narratives through intelligent insights.
 
-First, run the development server:
+Built with a **modern React stack**, this platform delivers real-time news data, AI-assisted summaries, and an elegant minimal interface designed for speed and clarity.
+
+---
+
+## 🚀 Live Demo
+
+🔗 **Live Website:** https://your-live-link.vercel.app
+
+---
+
+## ✨ Features
+
+* 📰 **Real-Time News Feed**
+  Fetches live news articles using a news API.
+
+* 🤖 **AI Assisted Analysis**
+  AI helps analyze article narratives and highlight potential bias.
+
+* ⚡ **Fast & Modern UI**
+  Built with React and optimized for performance.
+
+* 🎨 **Minimal Aesthetic Design**
+  Smooth layout with modern UI components.
+
+* 🔎 **Dynamic Article Rendering**
+  Articles load dynamically with structured presentation.
+
+* 🌍 **Global News Coverage**
+  Aggregates news from multiple sources.
+
+* 📱 **Responsive Design**
+  Works across desktop, tablet, and mobile devices.
+
+---
+
+## 🛠 Tech Stack
+
+**Frontend**
+
+* React
+* Vite
+* Tailwind CSS
+
+**APIs**
+
+* News API
+* AI API (for analysis)
+
+**Deployment**
+
+* Vercel
+
+**Version Control**
+
+* Git
+* GitHub
+
+---
+
+## 📂 Project Structure
+
+```
+project-root
+│
+├── public
+│
+├── src
+│   ├── components
+│   ├── pages
+│   ├── utils
+│   └── assets
+│
+├── package.json
+├── vite.config.js
+└── README.md
+```
+
+---
+
+## ⚙️ Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/yourusername/project-name.git
+```
+
+Navigate to the project folder:
+
+```bash
+cd project-name
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 🔑 Environment Variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Create a `.env` file in the root directory.
 
-## Learn More
+Example:
 
-To learn more about Next.js, take a look at the following resources:
+```
+VITE_NEWS_API_KEY=your_api_key
+VITE_AI_API_KEY=your_api_key
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📈 Future Improvements
 
-## Deploy on Vercel
+* User authentication
+* Personalized news recommendations
+* Sentiment analysis
+* News credibility scoring
+* Bookmark and save articles
+* Dark/Light mode toggle
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🤝 Contributing
+
+Contributions are welcome.
+
+1. Fork the repository
+2. Create a new branch
+3. Commit your changes
+4. Open a Pull Request
+
+---
+
+## 📜 License
+
+This project is open-source and available under the MIT License.
+
+---
+
+## 👨‍💻 Author
+
+**Shubh**
+
+CSE Student | AI Enthusiast | Building intelligent web experiences.
